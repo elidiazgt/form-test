@@ -1,0 +1,39 @@
+{
+  "name": "extreme-noon-lace",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=12"
+  },
+  "description": "A simple React Webpack.",
+  "scripts": {
+    "start": "webpack-dev-server --public $PROJECT_DOMAIN.glitch.me"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.3",
+    "node-sass": "^4.14.0",
+    "react-hot-loader": "^4.12.20",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-bootstrap": "^1.4.3",
+    "bootstrap": "^4.6.0",
+    "prop-types": "^15.7.2",
+    "axios": "^0.21.1"
+  },
+  "keywords": [
+    "glitch",
+    "markdown",
+    "react"
+  ],
+  "license": "MIT"
+}
