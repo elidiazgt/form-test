@@ -19,27 +19,26 @@ class App extends Component {
     super(props);
 
     this.state = {
-      response: ""
+      show_text: false,
+      final_text: []
     };
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onSubmit(e) {
     e.preventDefault();
-
-    console.log("onSubmit", e);
-    let inputs = e.target.elements;
-    console.log("formFirstText1", inputs);
     let _this = this;
+    let inputs = e.target.elements;
+    this.state.final_text = []
+    this.state.show_text = false
+
     for (let index = 0; index < inputs.length - 1; ++index) {
-      console.log("value ->", inputs[index].value);
-      getText(inputs[index].value);
+      getText(inputs[index].value,_this)
     }
 
-    //   this.setState({ response: "" });
-    function getText(param) {
-      console.log("param", param);
+      function getText (param,_this) {
       let result;
-      let api = 'localhost:8000';
+      let api = 'http://localhost:8000';
       
       axios
         .get(api+"/iecho", {
@@ -49,16 +48,18 @@ class App extends Component {
         })
         .then(function(response) {
           // handle success
-          //result =
-          console.log(response);
+          result = response.data         
+           let text = _this.state.final_text
+           text.push(result)
+           _this.setState({
+             show_text: true,
+             text
+           });
         })
         .catch(function(error) {
           // handle error
-          console.log(error);
+          console.log('error',error);
         })
-        .then(function() {
-          // always executed
-        });
       return result;
     }
   }
@@ -119,8 +120,12 @@ class App extends Component {
           </Row>
           <Row>
             <Col>
-              Reverted Text
-              <div id="reverted_text"></div>
+              <h3>Reverted Text</h3>
+              <div >
+                 {this.state.show_text ? this.state.final_text.reverse().map((subItems, sIndex) => {
+                     return <li key={sIndex}> {subItems}</li>
+                 }) : '' }
+             </div>
             </Col>
           </Row>
         </Container>

@@ -6,7 +6,7 @@
   },
   "description": "A simple React Webpack.",
   "scripts": {
-    "start": "webpack-dev-server --public $PROJECT_DOMAIN.glitch.me"
+    "start": "webpack-dev-server --port 8081"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
